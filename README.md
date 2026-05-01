@@ -1,17 +1,27 @@
-# menu_cafe_twentyfive
+# MENU CAFE TWENTYFIVE - CAFE MENU DIGITAL
 
-A new Flutter project.
+Proyek ini adalah platform pemesanan menu cafe modern berbasis **QR Code**. Pelanggan cukup datang, duduk, dan melakukan scan QR dimeja untuk memesan serta membayar tanpa harus mengantre dikasir.
 
-## Getting Started
+## Alur Pengguna (User Journey)
+1. **Scan QR Meja:** Pelanggan memindai code unik yang ada disetiap meja.
+2. **Pilih Menu:** Menjelajahi daftar menu digital (makanan/minuman) dengan tampilan menarik.
+3. **Pesan dan Bayar:** Melakukan pemesanan dan pembayaran langsung (E-Walet/digital payment).
+4. **Selesai:** Pesanan otomatis masuk ke dapur dan akan segera disajikan.
 
-This project is a starting point for a Flutter application.
+## Fitur Unggulan
+- **QR Table:** Setiap pesanan otomatis terhubung dengan nomor meja pelanggan.
+- **Dynamic Menu:** Tampilan menu yang responsif dan mudah digunakan.
+- **Real-time Order Tracking:** Notifikasi status pesanan (Sedang Diproses / selesai).
+- **Admin Dashbord:** Pantauan pesanan untuk bagian dapur dan kasir.
 
-A few resources to get you started if this is your first Flutter project:
+## Teknologi yang Digunakan
+- **Framework:** Flutter (Mobile) / React (Web)
+- **Database:** Firebase Realtime Database
+- **UI Design:** Bootstrap / Tailwind CSS
+- **Tools:** Git, VS Code
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Cara Menjalankan Proyek di Lokal
+1. **Clone repositori:**
+    '''bash
+    git clone https://github.com/saridevinta32-bot/menu_cafe_twentyfive.git
+    
