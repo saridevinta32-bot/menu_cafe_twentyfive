@@ -49,37 +49,37 @@ class _HomePageState extends State<HomePage> {
     {
       "nama": "Matcha Latte",
       "harga": "18.000",
-      "gambar": "assets/minum/minum_matcha.jpeg",
+      "gambar": "assets/minuman/minum_matcha.jpeg",
     },
     {
       "nama": "Matcha Latte",
       "harga": "18.000",
-      "gambar": "assets/minum/minum_matcha.jpeg",
+      "gambar": "assets/minuman/minum_matcha.jpeg",
     },
     {
       "nama": "Thai Tea",
       "harga": "18.000",
-      "gambar": "assets/minum/minum_thaitea.jpeg",
+      "gambar": "assets/minuman/minum_thaitea.jpeg",
     },
     {
       "nama": "Caramel Macchiato",
       "harga": "19.000",
-      "gambar": "assets/minum/minum_caramel.jpeg",
+      "gambar": "assets/minuman/minum_caramel.jpeg",
     },
     {
       "nama": "Es Kopi Susu",
       "harga": "16.000",
-      "gambar": "assets/minum/minum_eskopi.jpeg",
+      "gambar": "assets/minuman/minum_eskopi.jpeg",
     },
     {
       "nama": "Signature Coklat",
       "harga": "19.000",
-      "gambar": "assets/minum/minum_signature.jpeg",
+      "gambar": "assets/minuman/minum_signature.jpeg",
     },
     {
       "nama": "Mineral",
       "harga": "6.000",
-      "gambar": "assets/minum/minum_mineral.jpeg",
+      "gambar": "assets/minuman/minum_mineral.jpeg",
     },
   ];
 
@@ -87,22 +87,22 @@ class _HomePageState extends State<HomePage> {
     {
       "nama": "Chicken Burger",
       "harga": "18.000",
-      "gambar": "assets/minum/cemil_chicken.jpeg",
+      "gambar": "assets/cemilan/cemil_chicken.jpeg",
     },
     {
       "nama": "French Fries",
       "harga": "12.000",
-      "gambar": "assets/minum/cemil_french.jpeg",
+      "gambar": "assets/cemilan/cemil_french.jpeg",
     },
     {
       "nama": "Sandwich Cheese",
       "harga": "18.000",
-      "gambar": "assets/minum/cemil_sandwich.jpeg",
+      "gambar": "assets/cemilan/cemil_sandwich.jpeg",
     },
     {
       "nama": "Dimsum",
       "harga": "15.000",
-      "gambar": "assets/minum/cemil_dimsum.jpeg",
+      "gambar": "assets/cemilan/cemil_dimsum.jpeg",
     },
   ];
 
