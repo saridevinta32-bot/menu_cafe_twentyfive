@@ -139,6 +139,8 @@ class _HomePageState extends State<HomePage> {
       itemCount: data.length,
       padding: const EdgeInsets.all(10),
       itemBuilder: (context, index) {
+        String nama = data[index]['nama']!;
+        int qty = pesanan[nama] ?? 0;
         return Card(
           child: ListTile(
             leading: Image.asset(
@@ -148,7 +150,34 @@ class _HomePageState extends State<HomePage> {
             ),
             title: Text(data[index]['nama']!),
             subtitle: Text("Rp ${data[index]['harga']}"),
-            trailing: const Icon(Icons.add_circle, color: Colors.brown),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (qty > 0)
+                  IconButton(
+                    icon: const Icon(
+                      Icons.remove_circle_outline,
+                      color: Colors.red,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        String nama = data[index]['nama']!;
+                        pesanan[nama] = qty - 1;
+                      });
+                    },
+                  ),
+                if (qty > 0) Text("$qty"),
+                IconButton(
+                  icon: const Icon(Icons.add_circle, color: Colors.blueAccent),
+                  onPressed: () {
+                    setState(() {
+                      String nama = data[index]['nama']!;
+                      pesanan[nama] = qty + 1;
+                    });
+                  },
+                ),
+              ],
+            ),
           ),
         );
       },
