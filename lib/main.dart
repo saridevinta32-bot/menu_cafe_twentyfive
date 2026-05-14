@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    MaterialApp(debugShowCheckedModeBanner: false, home: const HomePage()),
+    const MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()),
   );
 }
 
@@ -11,42 +11,152 @@ class HomePage extends StatefulWidget {
 
   @override
   State<HomePage> createState() => _HomePageState();
+}
 
 class _HomePageState extends State<HomePage> {
   Map<String, int> pesanan = {};
   String metodePilihan = 'Brimo';
 
   final List<Map<String, String>> dataMakanan = [
+    {
+      "nama": "Nasi Goreng Seafood",
+      "harga": "22.000",
+      "gambar": "assets/makanan/makan_nasgor_seafood.jpeg",
+    },
+    {
+      "nama": "Spicy Beef Noodles",
+      "harga": "19.000",
+      "gambar": "assets/makanan/makan_spicy.jpeg",
+    },
+    {
+      "nama": "Nasi Goreng Special",
+      "harga": "25.000",
+      "gambar": "assets/makanan/makan_nasgor_special.jpeg",
+    },
+    {
+      "nama": "Bakmi Goreng",
+      "harga": "15.000",
+      "gambar": "assets/makanan/makan_bakmi.jpeg",
+    },
+    {
+      "nama": "Ayam Bakar Madu",
+      "harga": "25.000",
+      "gambar": "assets/makanan/makan_ayam.jpeg",
+    },
+  ];
 
-  ]
-}
-}
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
+  final List<Map<String, String>> dataMinuman = [
+    {
+      "nama": "Matcha Latte",
+      "harga": "18.000",
+      "gambar": "assets/minum/minum_matcha.jpeg",
+    },
+    {
+      "nama": "Matcha Latte",
+      "harga": "18.000",
+      "gambar": "assets/minum/minum_matcha.jpeg",
+    },
+    {
+      "nama": "Thai Tea",
+      "harga": "18.000",
+      "gambar": "assets/minum/minum_thaitea.jpeg",
+    },
+    {
+      "nama": "Caramel Macchiato",
+      "harga": "19.000",
+      "gambar": "assets/minum/minum_caramel.jpeg",
+    },
+    {
+      "nama": "Es Kopi Susu",
+      "harga": "16.000",
+      "gambar": "assets/minum/minum_eskopi.jpeg",
+    },
+    {
+      "nama": "Signature Coklat",
+      "harga": "19.000",
+      "gambar": "assets/minum/minum_signature.jpeg",
+    },
+    {
+      "nama": "Mineral",
+      "harga": "6.000",
+      "gambar": "assets/minum/minum_mineral.jpeg",
+    },
+  ];
+
+  final List<Map<String, String>> dataCemilan = [
+    {
+      "nama": "Chicken Burger",
+      "harga": "18.000",
+      "gambar": "assets/minum/cemil_chicken.jpeg",
+    },
+    {
+      "nama": "French Fries",
+      "harga": "12.000",
+      "gambar": "assets/minum/cemil_french.jpeg",
+    },
+    {
+      "nama": "Sandwich Cheese",
+      "harga": "18.000",
+      "gambar": "assets/minum/cemil_sandwich.jpeg",
+    },
+    {
+      "nama": "Dimsum",
+      "harga": "15.000",
+      "gambar": "assets/minum/cemil_dimsum.jpeg",
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: const Text(
+            "Menu Cafe Twentyfive",
+            style: TextStyle(color: Colors.black),
+          ),
+          bottom: const TabBar(
+            labelColor: Colors.blueAccent,
+            unselectedLabelColor: Colors.brown,
+            indicatorColor: Colors.grey,
+            tabs: [
+              Tab(text: "Makanan"),
+              Tab(text: "Minuman"),
+              Tab(text: "Cemilan"),
+            ],
+          ),
+        ),
+        body: TabBarView(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset('assets/logo_cafe_twentyfive.png', height: 50),
-                  const Text(
-                    "meja: 4",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF001F5B),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const Divider(thickness: 1, indent: 20, endIndent: 20),
+            _buildListMenu(dataMakanan),
+            _buildListMenu(dataMinuman),
+            _buildListMenu(dataCemilan),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildListMenu(List<Map<String, String>> data) {
+    return ListView.builder(
+      itemCount: data.length,
+      padding: const EdgeInsets.all(10),
+      itemBuilder: (context, index) {
+        return Card(
+          child: ListTile(
+            leading: Image.asset(
+              data[index]['gambar']!,
+              width: 50,
+              errorBuilder: (c, e, s) => const Icon(Icons.fastfood),
+            ),
+            title: Text(data[index]['nama']!),
+            subtitle: Text("Rp ${data[index]['harga']}"),
+            trailing: const Icon(Icons.add_circle, color: Colors.brown),
+          ),
+        );
+      },
     );
   }
 }
