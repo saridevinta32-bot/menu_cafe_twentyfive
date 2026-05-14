@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MENU CAFE TWENTYFIVE - CAFE MENU DIGITAL
 
 Proyek ini adalah platform pemesanan menu cafe modern berbasis **QR Code**. Pelanggan cukup datang, duduk, dan melakukan scan QR dimeja untuk memesan serta membayar tanpa harus mengantre dikasir.
@@ -25,3 +26,6 @@ Proyek ini adalah platform pemesanan menu cafe modern berbasis **QR Code**. Pela
     '''bash
     git clone https://github.com/saridevinta32-bot/menu_cafe_twentyfive.git
     
+=======
+# Menu Cafe twentyfive 
+>>>>>>> 77f9e8802006838bfa8a6ae0d282d5bff493228f
