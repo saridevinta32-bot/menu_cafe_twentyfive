@@ -52,11 +52,6 @@ class _HomePageState extends State<HomePage> {
       "gambar": "assets/minuman/minum_matcha.jpeg",
     },
     {
-      "nama": "Matcha Latte",
-      "harga": "18.000",
-      "gambar": "assets/minuman/minum_matcha.jpeg",
-    },
-    {
       "nama": "Thai Tea",
       "harga": "18.000",
       "gambar": "assets/minuman/minum_thaitea.jpeg",
