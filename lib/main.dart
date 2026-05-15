@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    const MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()),
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Menu Cafe 25',
+      home: HomePage(),
+    ),
   );
 }
 
@@ -20,27 +24,27 @@ class _HomePageState extends State<HomePage> {
   final List<Map<String, String>> dataMakanan = [
     {
       "nama": "Nasi Goreng Seafood",
-      "harga": "22.000",
+      "harga": "22000",
       "gambar": "assets/makanan/makan_nasgor_seafood.jpeg",
     },
     {
       "nama": "Spicy Beef Noodles",
-      "harga": "19.000",
+      "harga": "19000",
       "gambar": "assets/makanan/makan_spicy.jpeg",
     },
     {
       "nama": "Nasi Goreng Special",
-      "harga": "25.000",
+      "harga": "25000",
       "gambar": "assets/makanan/makan_nasgor_special.jpeg",
     },
     {
       "nama": "Bakmi Goreng",
-      "harga": "15.000",
+      "harga": "15000",
       "gambar": "assets/makanan/makan_bakmi.jpeg",
     },
     {
       "nama": "Ayam Bakar Madu",
-      "harga": "25.000",
+      "harga": "25000",
       "gambar": "assets/makanan/makan_ayam.jpeg",
     },
   ];
@@ -48,32 +52,32 @@ class _HomePageState extends State<HomePage> {
   final List<Map<String, String>> dataMinuman = [
     {
       "nama": "Matcha Latte",
-      "harga": "18.000",
+      "harga": "18000",
       "gambar": "assets/minuman/minum_matcha.jpeg",
     },
     {
       "nama": "Thai Tea",
-      "harga": "18.000",
+      "harga": "18000",
       "gambar": "assets/minuman/minum_thaitea.jpeg",
     },
     {
       "nama": "Caramel Macchiato",
-      "harga": "19.000",
+      "harga": "19000",
       "gambar": "assets/minuman/minum_caramel.jpeg",
     },
     {
       "nama": "Es Kopi Susu",
-      "harga": "16.000",
+      "harga": "16000",
       "gambar": "assets/minuman/minum_eskopi.jpeg",
     },
     {
       "nama": "Signature Coklat",
-      "harga": "19.000",
+      "harga": "19000",
       "gambar": "assets/minuman/minum_signature.jpeg",
     },
     {
       "nama": "Mineral",
-      "harga": "6.000",
+      "harga": "6000",
       "gambar": "assets/minuman/minum_mineral.jpeg",
     },
   ];
@@ -81,28 +85,46 @@ class _HomePageState extends State<HomePage> {
   final List<Map<String, String>> dataCemilan = [
     {
       "nama": "Chicken Burger",
-      "harga": "18.000",
+      "harga": "18000",
       "gambar": "assets/cemilan/cemil_chicken.jpeg",
     },
     {
       "nama": "French Fries",
-      "harga": "12.000",
+      "harga": "12000",
       "gambar": "assets/cemilan/cemil_french.jpeg",
     },
     {
       "nama": "Sandwich Cheese",
-      "harga": "18.000",
+      "harga": "18000",
       "gambar": "assets/cemilan/cemil_sandwich.jpeg",
     },
     {
       "nama": "Dimsum",
-      "harga": "15.000",
+      "harga": "15000",
       "gambar": "assets/cemilan/cemil_dimsum.jpeg",
     },
   ];
 
+  int hitungTotal() {
+    int total = 0;
+    List<Map<String, String>> semuaMenu = [
+      ...dataMakanan,
+      ...dataMinuman,
+      ...dataCemilan,
+    ];
+
+    pesanan.forEach((nama, jumlah) {
+      if (jumlah > 0) {
+        var item = semuaMenu.firstWhere((element) => element['nama'] == nama);
+        total += int.parse(item['harga']!) * jumlah;
+      }
+    });
+    return total;
+  }
+
   @override
   Widget build(BuildContext context) {
+    int totalHarga = hitungTotal();
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -130,6 +152,72 @@ class _HomePageState extends State<HomePage> {
             _buildListMenu(dataCemilan),
           ],
         ),
+
+        bottomNavigationBar: totalHarga > 0
+            ? Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.05),
+                      blurRadius: 10,
+                      offset: const Offset(0, -4),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Metode Pembayaran",
+                          style: TextStyle(fontSize: 12, color: Colors.grey),
+                        ),
+                        Text(
+                          "Total: Rp $totalHarga",
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blueAccent,
+                          ),
+                        ),
+                      ],
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HalamanSukses(),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 24,
+                          vertical: 12,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: Text(
+                        "Bayar via $metodePilihan",
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            : null,
       ),
     );
   }
@@ -181,6 +269,28 @@ class _HomePageState extends State<HomePage> {
           ),
         );
       },
+    );
+  }
+}
+
+class HalamanSukses extends StatelessWidget {
+  const HalamanSukses({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Text(
+          "Oke, pesanan akan kami siapkan!",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
     );
   }
 }
